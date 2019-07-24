@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -76,8 +77,6 @@ public class SplashActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
 
                         saveStoryFeedList(response);
-
-
                         LoadingDialog.cancelLoading();
                     }
                 }
@@ -145,9 +144,6 @@ public class SplashActivity extends AppCompatActivity {
         List<Story> storyResponse = response.body().getStories();
 
        for(int i=0; i< storyResponse.size(); i++) {
-
-
-
            addStoryViewModel.addStory( new StoryModel(
                    storyResponse.get(i).getTitle(),
                    storyResponse.get(i).getUser().getName(),
